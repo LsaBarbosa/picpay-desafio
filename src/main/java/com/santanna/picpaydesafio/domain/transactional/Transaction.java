@@ -2,10 +2,7 @@ package com.santanna.picpaydesafio.domain.transactional;
 
 import com.santanna.picpaydesafio.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,10 +10,11 @@ import java.time.LocalDateTime;
 @Entity(name = "transactions")
 @Table(name = "transactions")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-public class Transactional {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +23,7 @@ public class Transactional {
     @JoinColumn(name = "sender_id")
     private User sender;
     @ManyToOne
-    @JoinColumn(name = "reciver_id")
-    private User recive;
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
     private LocalDateTime timeStamp;
 }
