@@ -1,6 +1,6 @@
 package com.santanna.picpaydesafio.controller;
 
-import com.santanna.picpaydesafio.domain.dto.UserDTO;
+import com.santanna.picpaydesafio.dto.UserDTO;
 import com.santanna.picpaydesafio.domain.user.User;
 import com.santanna.picpaydesafio.service.UserServcie;
 import org.springframework.beans.factory.annotation.Autowired;

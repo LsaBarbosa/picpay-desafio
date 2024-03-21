@@ -1,4 +1,4 @@
-package com.santanna.picpaydesafio.domain.dto;
+package com.santanna.picpaydesafio.dto;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
 package com.santanna.picpaydesafio.domain.user;
 
-import com.santanna.picpaydesafio.domain.dto.UserDTO;
+import com.santanna.picpaydesafio.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

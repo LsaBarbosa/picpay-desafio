@@ -1,6 +1,6 @@
 package com.santanna.picpaydesafio.service;
 
-import com.santanna.picpaydesafio.domain.dto.TransactionDTO;
+import com.santanna.picpaydesafio.dto.TransactionDTO;
 import com.santanna.picpaydesafio.domain.transactional.Transaction;
 import com.santanna.picpaydesafio.domain.user.User;
 import com.santanna.picpaydesafio.repository.TransactionalRepository;

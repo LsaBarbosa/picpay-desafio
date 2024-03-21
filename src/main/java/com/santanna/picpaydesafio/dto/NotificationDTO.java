@@ -1,4 +1,4 @@
-package com.santanna.picpaydesafio.domain.dto;
+package com.santanna.picpaydesafio.dto;
 
 public record NotificationDTO(String email, String messsage) {
 }

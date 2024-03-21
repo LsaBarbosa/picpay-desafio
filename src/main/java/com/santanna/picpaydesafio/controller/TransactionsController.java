@@ -1,6 +1,6 @@
 package com.santanna.picpaydesafio.controller;
 
-import com.santanna.picpaydesafio.domain.dto.TransactionDTO;
+import com.santanna.picpaydesafio.dto.TransactionDTO;
 import com.santanna.picpaydesafio.domain.transactional.Transaction;
 import com.santanna.picpaydesafio.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;

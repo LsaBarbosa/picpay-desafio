@@ -1,6 +1,6 @@
 package com.santanna.picpaydesafio.service;
 
-import com.santanna.picpaydesafio.domain.dto.UserDTO;
+import com.santanna.picpaydesafio.dto.UserDTO;
 import com.santanna.picpaydesafio.domain.user.User;
 import com.santanna.picpaydesafio.domain.user.UserType;
 import com.santanna.picpaydesafio.repository.UserRepository;

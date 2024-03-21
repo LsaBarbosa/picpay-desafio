@@ -1,2 +1,4 @@
-package com.santanna.picpaydesafio.dto;public class ExceptionsDTO {
+package com.santanna.picpaydesafio.dto;
+
+public record ExceptionsDTO (String message, String statusCode){
 }
