@@ -6,7 +6,6 @@ import com.santanna.picpaydesafio.domain.user.User;
 import com.santanna.picpaydesafio.repository.TransactionalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,17 +15,18 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @Service
-public class TransactionalService {
+public class TransactionService {
 
     @Autowired
     private UserServcie userServcie;
     @Autowired
     private TransactionalRepository transactionalRepository;
-
+    @Autowired
+    private NotificationService notificationService;
     @Autowired
     private RestTemplate restTemplate;
 
-    public void createTransactional(TransactionDTO transactionDTO) throws Exception {
+    public Transaction createTransactional(TransactionDTO transactionDTO) throws Exception {
         User sender = this.userServcie.findUserById(transactionDTO.senderId());
         User receiver = this.userServcie.findUserById(transactionDTO.receiverId());
         userServcie.validateTransactional(sender, transactionDTO.value());
@@ -47,6 +47,11 @@ public class TransactionalService {
         this.transactionalRepository.save(newTransaction);
         this.userServcie.saveUser(sender);
         this.userServcie.saveUser(receiver);
+
+        this.notificationService.sendNotification(sender, "Transação enviada com sucesso");
+        this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");
+
+        return newTransaction;
     }
 
     public boolean authorizeTransactional(User sender, BigDecimal value) {
@@ -58,3 +63,4 @@ public class TransactionalService {
         } else return false;
     }
 }
+

@@ -1,5 +1,6 @@
 package com.santanna.picpaydesafio.service;
 
+import com.santanna.picpaydesafio.domain.dto.UserDTO;
 import com.santanna.picpaydesafio.domain.user.User;
 import com.santanna.picpaydesafio.domain.user.UserType;
 import com.santanna.picpaydesafio.repository.UserRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserServcie {
@@ -14,7 +16,7 @@ public class UserServcie {
     private UserRepository userRepository;
 
     public void validateTransactional(User sender, BigDecimal amount) throws Exception {
-        if (sender.getUserType() != UserType.MERCHANT){
+        if (sender.getUserType() == UserType.MERCHANT){
             throw new Exception("Usuário LOJISTA não apto a realizar a transação");
         }
 
@@ -24,11 +26,20 @@ public class UserServcie {
 
     }
 
+    public List<User> getAllUsers(){
+        return this.userRepository.findAll();
+    }
     public User findUserById (Long id) throws Exception {
     return this.userRepository.findById(id).orElseThrow(()-> new Exception("Usuário não foi encontrado"));
     }
 
     public void saveUser(User user){
          this.userRepository.save(user);
+    }
+
+    public User createUser(UserDTO userData) {
+        User newUser = new User(userData);
+        this.saveUser(newUser);
+        return newUser;
     }
 }
